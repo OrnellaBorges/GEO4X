@@ -1,7 +1,12 @@
+import AccordionV1 from "./Components/Mui/AccordionV1";
 import "./App.css";
 
 function App() {
-  return <div className="App">Cleaning component</div>;
+  return (
+    <>
+      <AccordionV1 />
+    </>
+  );
 }
 
 export default App;
