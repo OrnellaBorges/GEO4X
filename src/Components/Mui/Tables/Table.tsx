@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function CoordsTable() {
-  return <div>CoordsTable</div>;
+  return <div>This is a Table</div>;
 }

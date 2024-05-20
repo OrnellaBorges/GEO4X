@@ -1,10 +1,10 @@
-import AccordionV1 from "./Components/Mui/Accordions/AccordionV1";
+import Accordions from "./Components/Mui/Accordions/Accordions";
 import "./App.css";
 
 function App() {
   return (
-    <div className="wrapper">
-      <AccordionV1 />
+    <div className="app">
+      <Accordions />
     </div>
   );
 }
