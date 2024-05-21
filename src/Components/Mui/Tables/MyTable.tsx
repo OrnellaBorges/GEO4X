@@ -26,13 +26,21 @@ export default function MyTable({ tableHead, rows }: MyTableProps) {
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell sx={{ fontWeight: 700 }}>Head</TableCell>
+          {tableHead.map((head: string, headIndex: number) => (
+            <TableCell sx={{ fontWeight: 700 }} key={`${head}-${headIndex}`}>
+              {head}
+            </TableCell>
+          ))}
         </TableRow>
       </TableHead>
       <TableBody>
-        <TableRow>
-          <TableCell>Value</TableCell>
-        </TableRow>
+        {rows.map((row: Row, rowIndex: number) => (
+          <TableRow key={`${row.lat}-${rowIndex}`}>
+            {Object.values(row).map((values: number, cellIndex: number) => (
+              <TableCell key={`${values}-${cellIndex}`}>{values}</TableCell>
+            ))}
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
