@@ -1,25 +1,21 @@
-import {
-  Box,
-  TextField,
-  MenuItem,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { useState } from "react";
 
-export default function SelectV1() {
+export default function MySelect() {
+  const [method, setMethod] = useState<string>("");
+
   return (
-    <FormControl sx={{ m: 0, width: "100%" }} size="small">
-      {/*<InputLabel id="demo-select-small-label">Méthode de calcul</InputLabel>
-       */}
-      <TextField
+    <FormControl fullWidth>
+      <InputLabel id="demo-simple-select-label">Méthode de calcul</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={method}
         label="Méthode de calcul"
-        fullWidth
-        select
-        /* sx={{ "& .MuiInputLabel-root": { fontStyle: "italic" } }} */
       >
+        {/* créer un map ici pour plus tard */}
         <MenuItem value="A">Méthode A</MenuItem>
-        <MenuItem value="B">Méthode B</MenuItem>
-      </TextField>
+      </Select>
     </FormControl>
   );
 }

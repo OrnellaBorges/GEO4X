@@ -1,5 +1,6 @@
-import { FormControl, MenuItem, TextField, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import MyTable from "../Components/Mui/Tables/MyTable";
+import MySelect from "../Components/Mui/Selects/MySelect";
 import { coordsTable } from "./mockCoords";
 import { distancesTable } from "./mockDistances";
 
@@ -22,20 +23,7 @@ export const accordionData = [
   },
   {
     summary: "Volumes",
-    content: (
-      <FormControl sx={{ m: 0, width: "100%" }} size="small">
-        <TextField
-          label="Méthode de calcul"
-          select
-          value="A"
-          fullWidth
-          sx={{ "& .MuiInputLabel-root": { fontStyle: "italic" } }}
-        >
-          <MenuItem value="A">Méthode A</MenuItem>
-          <MenuItem value="B">Méthode B</MenuItem>
-        </TextField>
-      </FormControl>
-    ),
+    content: <MySelect />,
     componentType: "Typography",
   },
   {
