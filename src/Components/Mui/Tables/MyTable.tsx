@@ -26,7 +26,7 @@ export default function MyTable({ tableHead, rows }: MyTableProps) {
     <Table>
       <TableHead>
         <TableRow>
-          <TableCell>Head</TableCell>
+          <TableCell sx={{ fontWeight: 700 }}>Head</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
