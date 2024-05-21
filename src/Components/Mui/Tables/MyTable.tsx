@@ -6,7 +6,22 @@ import {
   TableRow,
 } from "@mui/material";
 
-export default function MyTable() {
+// Typage des props
+
+type Row = {
+  lat?: number;
+  lng?: number;
+  alt?: number;
+  "2D"?: number;
+  "3D"?: number;
+};
+
+type MyTableProps = {
+  tableHead: string[];
+  rows: Row[];
+};
+
+export default function MyTable({ tableHead, rows }: MyTableProps) {
   return (
     <Table>
       <TableHead>
