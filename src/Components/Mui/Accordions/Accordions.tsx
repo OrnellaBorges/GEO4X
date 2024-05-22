@@ -47,7 +47,7 @@ export default function Accordions() {
     console.log("UE-montage");
     console.log("screenHeight", window.innerHeight);
 
-    const maxLimitContainer = accordContainerRef.current?.offsetHeight ?? 0;
+    const maxLimitContainer = accordContainerRef.current?.offsetHeight ?? 0; // use nullish operator to avoid undefined or null to typescript
     console.log("maxLimit", maxLimitContainer);
 
     // une fois que le composant est rendu le composant sont monté le useEffect arrive
