@@ -23,7 +23,7 @@ export default function Accordions() {
   //console.log("accordsRefs", accordsRefs);
 
   //recup les ref des details = content
-  const detailsRefs = useRef<(HTMLElement | null)[]>([]);
+  const detailsRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   //petit fonction pour colorer temporairement les accordions
   const getBackground = (index: number) => {
@@ -118,7 +118,9 @@ export default function Accordions() {
     >
       {accordionData.map((accordion, accordIndex) => (
         <Accordion
-          ref={(el) => (accordsRefs.current[accordIndex] = el)}
+          ref={(el) =>
+            (accordsRefs.current[accordIndex] = el as HTMLDivElement)
+          }
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
           sx={{ backgroundColor: getBackground(accordIndex) }}
@@ -132,7 +134,9 @@ export default function Accordions() {
             {accordion.summary}
           </AccordionSummary>
           <AccordionDetails
-            ref={(el) => (detailsRefs.current[accordIndex] = el)}
+            ref={(el) =>
+              (detailsRefs.current[accordIndex] = el as HTMLDivElement)
+            }
             sx={{ maxHeight: "400px", overflow: "scroll" }}
           >
             {accordion.content}
