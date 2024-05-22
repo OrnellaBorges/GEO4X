@@ -12,6 +12,7 @@ import { accordionData } from "../../../api/accordionData";
 export default function Accordions() {
   //States
   const [expanded, setExpanded] = useState<number[]>([]);
+  const [availableHeight, setAvailableHeight] = useState<number>(0);
 
   const getBackground = (index: number) => {
     switch (index) {
@@ -35,6 +36,7 @@ export default function Accordions() {
 
   useEffect(() => {
     console.log("UE-montage");
+    console.log("screenHeight", window.innerHeight);
   }, []);
 
   return (
