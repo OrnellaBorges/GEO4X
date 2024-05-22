@@ -11,7 +11,8 @@ import { accordionData } from "../../../api/accordionData";
 
 export default function Accordions() {
   //States
-  const [expanded, setExpanded] = useState<number[]>([]);
+  const [expandedPanels, setExpandedPanels] = useState<number[]>([]);
+  console.log("expandedPanels", expandedPanels);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
   console.log("availableheight", availableHeight);
 
@@ -20,6 +21,7 @@ export default function Accordions() {
   const accordsRefs = useRef<(HTMLElement | null)[]>([]);
   //console.log("accordsRefs", accordsRefs);
 
+  //petit fonction pour colorer temporairement les accordions
   const getBackground = (index: number) => {
     switch (index) {
       case 0:
@@ -35,9 +37,25 @@ export default function Accordions() {
     }
   };
 
+  // fonction pour mettre a jour le state liste des expandedPanels
+
+  const updateExpandedPanels = (panelIndex: number) => {
+    console.log("coucou", panelIndex);
+
+    setExpandedPanels((prevExpanded) => [...prevExpanded, panelIndex]);
+  };
+
+  //fonction pour updater la hauteur dispo  =>>> a utiliser dans le handleChange
+
+  const updateAvailableHeight = () => {
+    console.log("je vais updater la hauteur dispo");
+  };
+
   const handleChange = (panelIndex: number, newExpanded: boolean) => {
     console.log("hello");
     console.log(`panelIndex: ${panelIndex}, newExpanded ${newExpanded}`);
+
+    updateExpandedPanels(panelIndex);
   };
 
   useEffect(() => {
