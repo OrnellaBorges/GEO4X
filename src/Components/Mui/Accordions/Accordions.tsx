@@ -13,6 +13,7 @@ export default function Accordions() {
   //States
   const [expandedPanels, setExpandedPanels] = useState<number[]>([]);
   console.log("expandedPanels", expandedPanels);
+
   const [availableHeight, setAvailableHeight] = useState<number>(0);
   //console.log("availableheight", availableHeight);
 
@@ -58,7 +59,7 @@ export default function Accordions() {
   //fonction pour updater la hauteur dispo  =>>> a utiliser dans le handleChange
 
   const updateAvailableHeight = () => {
-    console.log("je vais updater la hauteur dispo");
+    console.log("j'ajuste la hauteur dispo");
   };
 
   const handleChange = (panelIndex: number, newExpanded: boolean) => {
@@ -66,6 +67,7 @@ export default function Accordions() {
     console.log(`panelIndex: ${panelIndex}, newExpanded ${newExpanded}`);
 
     updateExpandedPanels(panelIndex);
+    updateAvailableHeight();
   };
 
   useEffect(() => {
