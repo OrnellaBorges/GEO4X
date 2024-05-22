@@ -13,11 +13,12 @@ export default function Accordions() {
   //States
   const [expanded, setExpanded] = useState<number[]>([]);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
+  console.log("availableheight", availableHeight);
 
   const accordContainerRef = useRef<HTMLDivElement | null>(null);
   // recup refs des accordions
   const accordsRefs = useRef<(HTMLElement | null)[]>([]);
-  console.log("accordsRefs", accordsRefs);
+  //console.log("accordsRefs", accordsRefs);
 
   const getBackground = (index: number) => {
     switch (index) {
@@ -36,11 +37,7 @@ export default function Accordions() {
 
   const handleChange = (panelIndex: number, newExpanded: boolean) => {
     console.log("hello");
-    console.log("panelIndex", panelIndex, "newExpanded", newExpanded);
-    console.warn(
-      "accordContainerRef",
-      accordContainerRef.current?.offsetHeight
-    );
+    console.log(`panelIndex: ${panelIndex}, newExpanded ${newExpanded}`);
   };
 
   useEffect(() => {
@@ -48,7 +45,7 @@ export default function Accordions() {
     console.log("screenHeight", window.innerHeight);
 
     const maxLimitContainer = accordContainerRef.current?.offsetHeight ?? 0; // use nullish operator to avoid undefined or null to typescript
-    console.log("maxLimit", maxLimitContainer);
+    console.log("maxLimitContainer", maxLimitContainer);
 
     // une fois que le composant est rendu le composant sont monté le useEffect arrive
     // mettre a jour tableau accordsRefs => dois avoir une liste de hauteur en nombre de chaque hauteur d'accordion au départ
@@ -73,12 +70,15 @@ export default function Accordions() {
       "hauteur dispo =",
       maxLimitContainer - sumOfAccordsHeightsClosed
     );
-  }, []);
 
+    // mise a jour de la place dispo
+    setAvailableHeight(window.innerHeight - sumOfAccordsHeightsClosed);
+  }, []);
+  console.log("availableheight", availableHeight);
   return (
     <div
       className="accordionContainer"
-      style={{ height: "600px", border: "3px solid" }}
+      style={{ height: "100vh", border: "3px solid", width: "300px" }}
       ref={accordContainerRef}
     >
       {accordionData.map((accordion, accordIndex) => (
