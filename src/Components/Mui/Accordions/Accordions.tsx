@@ -8,6 +8,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { accordionData } from "../../../api/accordionData";
+import { Height } from "@mui/icons-material";
 
 export default function Accordions() {
   //States
@@ -45,10 +46,19 @@ export default function Accordions() {
     // une fois que le composant est monté le useEffect arrive en dernier
     // mettre a jour tableau accordsRefs => dois avoir une liste de hauteur en nombre de chaque hauteur d'accordion au départ
 
-    const accordHeights = accordsRefs.current.map(
+    const accordsHeights = accordsRefs.current.map(
       (ref) => ref?.offsetHeight || 0
     );
-    console.log("accordHeights", accordHeights);
+    console.log("accordHeights", accordsHeights);
+    //retourne un tableau de nombre => [48, 48, 48, 48]
+
+    // faire la somme total des accordions fermés
+    //utiliser .reduce() method
+    const sum = accordsHeights.reduce(
+      (acc, currentHeight) => acc + currentHeight,
+      0
+    );
+    console.log("sum", sum);
   }, []);
 
   return (
