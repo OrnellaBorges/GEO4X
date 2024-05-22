@@ -6,7 +6,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { accordionData } from "../../../Api/accordionData";
+import { accordionData } from "../../../api/accordionData";
 
 export default function Accordions() {
   const getBackground = (index: number) => {
