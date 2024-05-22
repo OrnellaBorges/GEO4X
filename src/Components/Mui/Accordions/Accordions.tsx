@@ -95,10 +95,11 @@ export default function Accordions() {
     // mise a jour de la place dispo
     setAvailableHeight(window.innerHeight - sumOfAccordsHeightsClosed);
 
-    // recup hauteur des details
+    // recup hauteur des details dans un tableau // scrollHeight vraie hauteur
     const heightDetails = detailsRefs.current.map(
       (ref) => ref?.scrollHeight || 0
     );
+    console.log("heightDetails", heightDetails);
     setDetailsHeights(heightDetails);
   }, []);
 
