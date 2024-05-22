@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -9,6 +10,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { accordionData } from "../../../api/accordionData";
 
 export default function Accordions() {
+  //States
+  const [expanded, setExpanded] = useState<number[]>([]);
+  console.log("expanded", expanded);
+
   const getBackground = (index: number) => {
     switch (index) {
       case 0:
@@ -24,6 +29,11 @@ export default function Accordions() {
     }
   };
 
+  const handleChange = (panelIndex: number, newExpanded: boolean) => {
+    console.log("hello");
+    console.log("panelIndex", panelIndex, "newExpanded", newExpanded);
+  };
+
   return (
     <>
       {accordionData.map((accordion, accordIndex) => (
@@ -31,6 +41,7 @@ export default function Accordions() {
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
           sx={{ backgroundColor: getBackground(accordIndex) }}
+          onChange={(e, newExpanded) => handleChange(accordIndex, newExpanded)}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
