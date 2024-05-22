@@ -27,12 +27,15 @@ export default function Accordions() {
   return (
     <>
       {accordionData.map((accordion, accordIndex) => (
-        <Accordion key={`${accordion.summary}-${accordIndex}`} disableGutters>
+        <Accordion
+          key={`${accordion.summary}-${accordIndex}`}
+          disableGutters
+          sx={{ backgroundColor: getBackground(accordIndex) }}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
             id="panel1-header"
-            sx={{ backgroundColor: getBackground(accordIndex) }}
           >
             {accordion.summary}
           </AccordionSummary>
