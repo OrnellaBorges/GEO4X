@@ -11,7 +11,7 @@ import { accordionData } from "../../../api/accordionData";
 
 export default function Accordions() {
   //States
-  const [expandedPanels, setExpandedPanels] = useState<number[]>([]);
+  const [expandedPanels, setExpandedPanels] = useState<number[]>([]); // Etat de stockage des index ouverts
   console.log("expandedPanels", expandedPanels);
 
   const [availableHeight, setAvailableHeight] = useState<number>(0);
@@ -21,6 +21,9 @@ export default function Accordions() {
   // recup refs des accordions
   const accordsRefs = useRef<(HTMLElement | null)[]>([]);
   //console.log("accordsRefs", accordsRefs);
+
+  //recup les ref des details = content
+  const detailsRefs = useRef<(HTMLElement | null)[]>([]);
 
   //petit fonction pour colorer temporairement les accordions
   const getBackground = (index: number) => {
@@ -63,11 +66,14 @@ export default function Accordions() {
   };
 
   const handleChange = (panelIndex: number, newExpanded: boolean) => {
-    console.log("hello");
-    console.log(`panelIndex: ${panelIndex}, newExpanded ${newExpanded}`);
+    console.log("hello je change");
 
+    //au changement je dois mettre a jour ce state pour connaitre lesquels sont ouvert
     updateExpandedPanels(panelIndex);
-    updateAvailableHeight();
+
+    // recuperer la hauteur des accordions ouverts
+
+    // updateAvailableHeight();
   };
 
   useEffect(() => {
@@ -84,7 +90,6 @@ export default function Accordions() {
       (ref) => ref?.offsetHeight || 0
     );
     console.log("accordHeights", accordsHeights);
-    //retourne un tableau de nombre => [48, 48, 48, 48]
 
     // faire la somme totale des accordions fermés
     //utiliser .reduce() prend le tableau des hauteurs
@@ -126,7 +131,12 @@ export default function Accordions() {
           >
             {accordion.summary}
           </AccordionSummary>
-          <AccordionDetails>{accordion.content}</AccordionDetails>
+          <AccordionDetails
+            ref={(el) => (detailsRefs.current[accordIndex] = el)}
+            sx={{ maxHeight: "400px", overflow: "scroll" }}
+          >
+            {accordion.content}
+          </AccordionDetails>
         </Accordion>
       ))}
     </div>
