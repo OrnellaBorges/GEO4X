@@ -14,7 +14,7 @@ export default function Accordions() {
   const [expandedPanels, setExpandedPanels] = useState<number[]>([]);
   console.log("expandedPanels", expandedPanels);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
-  console.log("availableheight", availableHeight);
+  //console.log("availableheight", availableHeight);
 
   const accordContainerRef = useRef<HTMLDivElement | null>(null);
   // recup refs des accordions
@@ -38,11 +38,21 @@ export default function Accordions() {
   };
 
   // fonction pour mettre a jour le state liste des expandedPanels
-
   const updateExpandedPanels = (panelIndex: number) => {
     console.log("coucou", panelIndex);
-
-    setExpandedPanels((prevExpanded) => [...prevExpanded, panelIndex]);
+    // CONDITION :
+    //SI index du pannel est inclu dans la liste =>> utiliser .includes() pour retirer le panel car on le referme
+    if (expandedPanels.includes(panelIndex)) {
+      console.warn("je retire");
+      // filtrer la liste pour retirer l'index de la liste car on referme l'accordion
+      setExpandedPanels((prevExpanded) =>
+        prevExpanded.filter((panel) => panel !== panelIndex)
+      );
+    } else {
+      console.warn("j'ajoute");
+      // avec ça j'ajoute dans la liste des accordion ouverts "expandedPannels"
+      setExpandedPanels((prevExpanded) => [...prevExpanded, panelIndex]);
+    }
   };
 
   //fonction pour updater la hauteur dispo  =>>> a utiliser dans le handleChange
@@ -92,7 +102,7 @@ export default function Accordions() {
     // mise a jour de la place dispo
     setAvailableHeight(window.innerHeight - sumOfAccordsHeightsClosed);
   }, []);
-  console.log("availableheight", availableHeight);
+  //console.log("availableheight", availableHeight);
   return (
     <div
       className="accordionContainer"
