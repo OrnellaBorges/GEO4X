@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -12,7 +12,6 @@ import { accordionData } from "../../../api/accordionData";
 export default function Accordions() {
   //States
   const [expanded, setExpanded] = useState<number[]>([]);
-  console.log("expanded", expanded);
 
   const getBackground = (index: number) => {
     switch (index) {
@@ -33,6 +32,10 @@ export default function Accordions() {
     console.log("hello");
     console.log("panelIndex", panelIndex, "newExpanded", newExpanded);
   };
+
+  useEffect(() => {
+    console.log("UE-montage");
+  }, []);
 
   return (
     <>
