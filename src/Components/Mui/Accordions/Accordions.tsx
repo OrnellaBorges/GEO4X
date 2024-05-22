@@ -8,13 +8,13 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { accordionData } from "../../../api/accordionData";
-import { Height } from "@mui/icons-material";
 
 export default function Accordions() {
   //States
   const [expanded, setExpanded] = useState<number[]>([]);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
 
+  const accordContainerRef = useRef<HTMLDivElement | null>(null);
   // recup refs des accordions
   const accordsRefs = useRef<(HTMLElement | null)[]>([]);
   console.log("accordsRefs", accordsRefs);
@@ -37,13 +37,20 @@ export default function Accordions() {
   const handleChange = (panelIndex: number, newExpanded: boolean) => {
     console.log("hello");
     console.log("panelIndex", panelIndex, "newExpanded", newExpanded);
+    console.warn(
+      "accordContainerRef",
+      accordContainerRef.current?.offsetHeight
+    );
   };
 
   useEffect(() => {
     console.log("UE-montage");
     console.log("screenHeight", window.innerHeight);
 
-    // une fois que le composant est monté le useEffect arrive en dernier
+    const maxLimitContainer = accordContainerRef.current?.offsetHeight ?? 0;
+    console.log("maxLimit", maxLimitContainer);
+
+    // une fois que le composant est rendu le composant sont monté le useEffect arrive
     // mettre a jour tableau accordsRefs => dois avoir une liste de hauteur en nombre de chaque hauteur d'accordion au départ
 
     const accordsHeights = accordsRefs.current.map(
@@ -52,17 +59,28 @@ export default function Accordions() {
     console.log("accordHeights", accordsHeights);
     //retourne un tableau de nombre => [48, 48, 48, 48]
 
-    // faire la somme total des accordions fermés
-    //utiliser .reduce() method
-    const sum = accordsHeights.reduce(
+    // faire la somme totale des accordions fermés
+    //utiliser .reduce() prend le tableau des hauteurs
+    const sumOfAccordsHeightsClosed = accordsHeights.reduce(
       (acc, currentHeight) => acc + currentHeight,
       0
     );
-    console.log("sum", sum);
+    console.log("sumOfAccordsHeightsClosed", sumOfAccordsHeightsClosed);
+
+    //Calculer la hauteur disponible hauteur ecran - somme des hauteurs des accordions fermées
+
+    console.log(
+      "hauteur dispo =",
+      maxLimitContainer - sumOfAccordsHeightsClosed
+    );
   }, []);
 
   return (
-    <>
+    <div
+      className="accordionContainer"
+      style={{ height: "600px", border: "3px solid" }}
+      ref={accordContainerRef}
+    >
       {accordionData.map((accordion, accordIndex) => (
         <Accordion
           ref={(el) => (accordsRefs.current[accordIndex] = el)}
@@ -81,6 +99,6 @@ export default function Accordions() {
           <AccordionDetails>{accordion.content}</AccordionDetails>
         </Accordion>
       ))}
-    </>
+    </div>
   );
 }
