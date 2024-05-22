@@ -14,7 +14,7 @@ export default function Accordions() {
   const [expanded, setExpanded] = useState<number[]>([]);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
 
-  // recup refs des accordions et des details
+  // recup refs des accordions
   const accordsRefs = useRef<(HTMLElement | null)[]>([]);
   console.log("accordsRefs", accordsRefs);
 
@@ -41,13 +41,21 @@ export default function Accordions() {
   useEffect(() => {
     console.log("UE-montage");
     console.log("screenHeight", window.innerHeight);
+
+    // une fois que le composant est monté le useEffect arrive en dernier
+    // mettre a jour tableau accordsRefs => dois avoir une liste de hauteur en nombre de chaque hauteur d'accordion au départ
+
+    const accordHeights = accordsRefs.current.map(
+      (ref) => ref?.offsetHeight || 0
+    );
+    console.log("accordHeights", accordHeights);
   }, []);
 
   return (
     <>
       {accordionData.map((accordion, accordIndex) => (
         <Accordion
-          /* ref={accordsRefs} */
+          ref={(el) => (accordsRefs.current[accordIndex] = el)}
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
           sx={{ backgroundColor: getBackground(accordIndex) }}
