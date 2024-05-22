@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -13,6 +13,10 @@ export default function Accordions() {
   //States
   const [expanded, setExpanded] = useState<number[]>([]);
   const [availableHeight, setAvailableHeight] = useState<number>(0);
+
+  // recup refs des accordions et des details
+  const accordsRefs = useRef<(HTMLElement | null)[]>([]);
+  console.log("accordsRefs", accordsRefs);
 
   const getBackground = (index: number) => {
     switch (index) {
@@ -43,6 +47,7 @@ export default function Accordions() {
     <>
       {accordionData.map((accordion, accordIndex) => (
         <Accordion
+          /* ref={accordsRefs} */
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
           sx={{ backgroundColor: getBackground(accordIndex) }}
