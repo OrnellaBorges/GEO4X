@@ -3,10 +3,6 @@ import { useState } from "react";
 
 export default function MySelect() {
   const [method, setMethod] = useState<string>("");
-  console.log("method", method);
-  /*   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  }; */
 
   const methodsItems = [
     { value: "A", label: "Méthode A" },

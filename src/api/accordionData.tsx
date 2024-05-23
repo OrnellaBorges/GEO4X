@@ -4,10 +4,6 @@ import MySelect from "../Components/Mui/Selects/MySelect";
 import { coordsTable } from "./mockCoords";
 import { distancesTable } from "./mockDistances";
 
-// il faudra creer une fonction de transformation :
-// pour appeler le bon composant mui en fonction du type de donnée reçu
-// afin de genener un nouveau tableau
-
 export const accordionData = [
   {
     summary: "Aires",
