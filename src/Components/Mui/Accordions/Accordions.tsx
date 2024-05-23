@@ -1,14 +1,8 @@
-import { useEffect, useState, useRef } from "react";
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@mui/material";
+import { useEffect, useState, useRef, SyntheticEvent } from "react";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import { accordionData } from "../../../api/accordionData";
-import { count } from "console";
 
 export default function Accordions() {
   //States
@@ -88,8 +82,10 @@ export default function Accordions() {
           }
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
-          onChange={(e, newExpanded) => handleChange(accordIndex, newExpanded)}
-          sx={{ boxShadow: "none" }}
+          onChange={(e: SyntheticEvent, newExpanded: boolean) =>
+            handleChange(accordIndex, newExpanded)
+          }
+          sx={{ boxShadow: "none", fontWeight: 500 }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

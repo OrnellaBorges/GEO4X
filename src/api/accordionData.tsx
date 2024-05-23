@@ -7,7 +7,7 @@ import { distancesTable } from "./mockDistances";
 export const accordionData = [
   {
     summary: "Aires",
-    content: <Typography>Lorem ipsum dolor sit amet.</Typography>,
+    content: <Typography>Welcome Corentin</Typography>,
     componentType: "Typography",
   },
   {
