@@ -28,8 +28,8 @@ export const accordionData = [
     summary: "Distances",
     titleTable: (
       <>
-        <Typography>Total 2D:</Typography>
-        <Typography>Total 3D:</Typography>
+        <Typography sx={{ fontWeight: 700 }}>Total 2D:</Typography>
+        <Typography sx={{ fontWeight: 700 }}>Total 3D:</Typography>
       </>
     ),
     content: <MyTable tableHead={["2D (m)", "3D (m)"]} rows={distancesTable} />,
