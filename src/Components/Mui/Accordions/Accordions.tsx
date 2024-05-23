@@ -103,12 +103,12 @@ export default function Accordions() {
   };
 
   useEffect(() => {
-    console.log("UE-montage");
+    /* console.log("UE-montage");
     console.log("screenHeight", window.innerHeight);
 
     const maxLimitContainer = accordContainerRef.current?.offsetHeight ?? 0; // use nullish operator to avoid undefined or null to typescript
     console.log("maxLimitContainer", maxLimitContainer);
-
+ */
     const accordsHeights = accordsRefs.current.map(
       (ref) => ref?.offsetHeight || 0
     );
