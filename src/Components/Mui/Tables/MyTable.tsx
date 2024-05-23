@@ -27,7 +27,11 @@ export default function MyTable({ tableHead, rows }: MyTableProps) {
       <TableHead>
         <TableRow>
           {tableHead.map((head: string, headIndex: number) => (
-            <TableCell sx={{ fontWeight: 700 }} key={`${head}-${headIndex}`}>
+            <TableCell
+              sx={{ fontWeight: 700 }}
+              size="small"
+              key={`${head}-${headIndex}`}
+            >
               {head}
             </TableCell>
           ))}
@@ -37,7 +41,9 @@ export default function MyTable({ tableHead, rows }: MyTableProps) {
         {rows.map((row: Row, rowIndex: number) => (
           <TableRow key={`${row.lat}-${rowIndex}`}>
             {Object.values(row).map((values: number, cellIndex: number) => (
-              <TableCell key={`${values}-${cellIndex}`}>{values}</TableCell>
+              <TableCell size="small" key={`${values}-${cellIndex}`}>
+                {values}
+              </TableCell>
             ))}
           </TableRow>
         ))}

@@ -15,7 +15,7 @@ export default function MySelect() {
   ];
 
   return (
-    <FormControl fullWidth>
+    <FormControl fullWidth size="small">
       <InputLabel id="demo-simple-select-label" sx={{ fontStyle: "italic" }}>
         Méthode de calcul
       </InputLabel>
