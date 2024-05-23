@@ -173,6 +173,7 @@ export default function Accordions() {
               overflow: "scroll",
             }}
           >
+            {accordion.titleTable}
             {accordion.content}
           </AccordionDetails>
         </Accordion>

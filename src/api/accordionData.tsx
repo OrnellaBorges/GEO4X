@@ -11,15 +11,7 @@ import { distancesTable } from "./mockDistances";
 export const accordionData = [
   {
     summary: "Aires",
-    content: (
-      <Typography>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-        minim veniam,
-      </Typography>
-    ),
+    content: <Typography>Lorem ipsum dolor sit amet.</Typography>,
     componentType: "Typography",
   },
   {
