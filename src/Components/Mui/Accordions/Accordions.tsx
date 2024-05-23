@@ -166,20 +166,20 @@ export default function Accordions() {
             ref={(el) =>
               (detailsRefs.current[accordIndex] = el as HTMLDivElement)
             }
-            /*  sx={{
+            sx={{
               maxHeight: countBigPanels
                 ? availableHeight / countBigPanels
-                : "auto",
-              overflow: "scroll",
-            }} */
+                : "none",
+              overflow: "auto",
+            }}
 
-            sx={{
+            /* sx={{
               maxHeight:
                 countBigPanels > 0 && expandedPanels.includes(accordIndex)
                   ? `${availableHeight / countBigPanels}px`
                   : "none",
               overflow: "auto",
-            }}
+            }} */
           >
             {accordion.titleTable}
             {accordion.content}
