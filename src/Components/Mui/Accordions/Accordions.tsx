@@ -34,7 +34,6 @@ export default function Accordions() {
 
   const updateAvailableHeight = (panelIndex: number, newExpanded: boolean) => {
     const detailHeight = detailsHeights[panelIndex];
-    console.log("hauteur d'un detail ouvert", detailHeight);
     if (detailHeight < availableHeight) {
       if (newExpanded) {
         setAvailableHeight((prevValue) => prevValue - detailHeight);
@@ -79,7 +78,7 @@ export default function Accordions() {
   return (
     <div
       className="accordionContainer"
-      style={{ height: "100vh", border: "3px solid", width: "300px" }}
+      style={{ height: "100vh", maxWidth: "300px" }}
       ref={accordContainerRef}
     >
       {accordionData.map((accordion, accordIndex) => (
@@ -90,6 +89,7 @@ export default function Accordions() {
           key={`${accordion.summary}-${accordIndex}`}
           disableGutters
           onChange={(e, newExpanded) => handleChange(accordIndex, newExpanded)}
+          sx={{ boxShadow: "none" }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
