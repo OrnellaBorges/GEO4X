@@ -3,23 +3,34 @@ import { useState } from "react";
 
 export default function MySelect() {
   const [method, setMethod] = useState<string>("");
-
+  console.log("method", method);
   /*   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   }; */
 
+  const methodsItems = [
+    { value: "A", label: "Méthode A" },
+    { value: "B", label: "Méthode B" },
+    { value: "C", label: "Méthode C" },
+  ];
+
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Méthode de calcul</InputLabel>
+      <InputLabel id="demo-simple-select-label" sx={{ fontStyle: "italic" }}>
+        Méthode de calcul
+      </InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
         value={method}
         label="Méthode de calcul"
-        /* onChange={handleChange} */
+        onChange={(e) => setMethod(e.target.value)}
       >
-        {/* créer un map ici pour plus tard */}
-        <MenuItem value="A">Méthode A</MenuItem>
+        {methodsItems.map((item, indexItem) => (
+          <MenuItem key={`${item.value}-${indexItem}`} value={item.value}>
+            {item.label}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );
